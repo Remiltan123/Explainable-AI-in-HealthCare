@@ -34,10 +34,12 @@ export default function Sidebar({ active, setActive }) {
           <SidebarItem emoji="🔔" label="Upcoming Goals"    active={active==="goals"}    onClick={() => setActive("goals")} />
         </div>
 
+        {/*
         <div className="sidebar__foot">
           <span>© 2025 CareDash</span>
           <span>v1.0</span>
         </div>
+        */}
       </div>
     </aside>
   );
