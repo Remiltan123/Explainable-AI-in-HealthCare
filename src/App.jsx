@@ -1,11 +1,10 @@
-import React from 'react'
+import "./App.css";
+import PatientDashboard from "./patients/PatientDashboard";
 
-const App = () => {
+export default function App() {
   return (
-    <div >
-      Explainable AI IN Healthcare
+    <div className="app">
+      <PatientDashboard />
     </div>
-  )
+  );
 }
-
-export default App

@@ -1,0 +1,4 @@
+.days{ display:grid; grid-template-columns:repeat(7,1fr); gap:10px; max-width:100% }
+.day{ border-radius:14px; background:linear-gradient(135deg,#e0f2fe,#dcfce7); border:1px solid var(--ring); padding:10px; text-align:center }
+.day__label{ margin:0; color:#64748b; font-size:12px }
+.day__value{ margin:2px 0 0; font-weight:700 }

@@ -1,0 +1,22 @@
+/* Page fills viewport, never shows browser scrollbars */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;                  /* 🚫 no site-level scrollbars */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: #0b1020;               /* dark frame behind board */
+}
+
+/* Wrap your app with <div class="app"> in App.jsx */
+.app {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;                  /* safety */
+}
+
+img, svg, canvas, video {            /* defensive: no overflow */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

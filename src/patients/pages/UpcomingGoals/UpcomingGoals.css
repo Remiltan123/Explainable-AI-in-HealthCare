@@ -1,0 +1,3 @@
+.goals{ display:flex; flex-direction:column; gap:10px; font-size:14px; max-width:100% }
+.goals__row{ display:flex; align-items:center; justify-content:space-between }
+.muted{ color: var(--muted); font-size: 12px }
