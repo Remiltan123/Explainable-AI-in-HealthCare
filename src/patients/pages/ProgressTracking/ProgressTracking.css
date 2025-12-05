@@ -1,4 +1,44 @@
-.days{ display:grid; grid-template-columns:repeat(7,1fr); gap:10px; max-width:100% }
-.day{ border-radius:14px; background:linear-gradient(135deg,#e0f2fe,#dcfce7); border:1px solid var(--ring); padding:10px; text-align:center }
-.day__label{ margin:0; color:#64748b; font-size:12px }
-.day__value{ margin:2px 0 0; font-weight:700 }
+.progress-tracking {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  max-width: 100%;
+}
+
+.day {
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e0f2fe, #dcfce7);
+  border: 1px solid var(--ring);
+  padding: 10px;
+  text-align: center;
+}
+
+.day__label {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.day__value {
+  margin: 2px 0 0;
+  font-weight: 700;
+}

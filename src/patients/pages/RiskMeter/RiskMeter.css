@@ -1,7 +1,84 @@
-.riskrow{ display:flex; align-items:center; gap:20px; flex-wrap:wrap; max-width:100% }
-.riskmeter{ width:160px; height:160px }
-.riskmeter__value{ fill:#0f172a; font-size:22px; font-weight:700 }
-.riskmeter__label{ fill:#64748b; font-size:12px }
-.legend{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; font-size:14px }
-.dot{ display:inline-block; height:8px; width:8px; border-radius:999px; margin-right:8px; background:#e2e8f0 }
-.dot--green{ background:#34d399 } .dot--amber{ background:#f59e0b } .dot--red{ background:#fb7185 }
+.risk-meter-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.muted {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.riskrow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.riskmeter {
+  width: 160px;
+  height: 160px;
+}
+
+.riskmeter__value {
+  fill: #0f172a;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.riskmeter__label {
+  fill: #64748b;
+  font-size: 12px;
+}
+
+.legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.dot {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 999px;
+  margin-right: 8px;
+  background: #e2e8f0;
+}
+
+.dot--green {
+  background: #34d399;
+}
+
+.dot--amber {
+  background: #f59e0b;
+}
+
+.dot--red {
+  background: #fb7185;
+}

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Card from "../../components/Card";
+import React, { useState } from "react";
 import "./ProgressTracking.css";
 
 export default function ProgressTracking() {
@@ -8,7 +7,10 @@ export default function ProgressTracking() {
   );
 
   return (
-    <Card title="Progress Tracking" subtitle="Past 7 days overview">
+    <div className="progress-tracking">
+      <h3 className="title">Progress Tracking</h3>
+      <p className="subtitle">Past 7 days overview</p>
+
       <div className="days">
         {progressValues.map((val, i) => (
           <div className="day" key={i}>
@@ -17,6 +19,6 @@ export default function ProgressTracking() {
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 }
