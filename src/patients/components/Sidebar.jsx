@@ -3,12 +3,11 @@ function SidebarItem({ emoji, label, active, onClick }) {
     <button
       className={`sideitem ${active ? "sideitem--active" : ""}`}
       onClick={onClick}
-      title={label}           /* tooltip when collapsed */
+      title={label}           
     >
       <span className="sideitem__icon" role="img" aria-label={label}>
         {emoji}
       </span>
-      {/* label hidden by default via CSS; shown on hover or when active */}
       <span className="sideitem__label">{label}</span>
     </button>
   );
