@@ -1,9 +1,10 @@
-import Card from "../../components/Card";
+import React from "react";
 import "./RiskMeter.css";
 
 function Donut({ value = 0.62 }) {
   const R = 60, S = 12, C = 2 * Math.PI * R;
   const progress = C * value;
+
   return (
     <svg viewBox="0 0 160 160" className="riskmeter" aria-label="Risk meter">
       <defs>
@@ -13,23 +14,49 @@ function Donut({ value = 0.62 }) {
         </linearGradient>
       </defs>
       <circle cx="80" cy="80" r={R} fill="none" stroke="#e5e7eb" strokeWidth={S} />
-      <circle cx="80" cy="80" r={R} fill="none" stroke="url(#grad)" strokeWidth={S}
-              strokeLinecap="round" strokeDasharray={`${progress} ${C}`} transform="rotate(-90 80 80)"/>
-      <text x="80" y="80" textAnchor="middle" dominantBaseline="middle" className="riskmeter__value">
-        {Math.round(value*100)}%
+      <circle
+        cx="80"
+        cy="80"
+        r={R}
+        fill="none"
+        stroke="url(#grad)"
+        strokeWidth={S}
+        strokeLinecap="round"
+        strokeDasharray={`${progress} ${C}`}
+        transform="rotate(-90 80 80)"
+      />
+      <text
+        x="80"
+        y="80"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        className="riskmeter__value"
+      >
+        {Math.round(value * 100)}%
       </text>
-      <text x="80" y="100" textAnchor="middle" className="riskmeter__label">Risk level</text>
+      <text
+        x="80"
+        y="100"
+        textAnchor="middle"
+        className="riskmeter__label"
+      >
+        Risk level
+      </text>
     </svg>
   );
 }
 
 export default function RiskMeter() {
   return (
-    <Card
-      title="Risk Meter"
-      subtitle="Real-time overall risk score"
-      right={<span className="muted">updated 2m ago</span>}
-    >
+    <div className="risk-meter-section">
+      <div className="header">
+        <div>
+          <h3 className="title">Risk Meter</h3>
+          <p className="subtitle">Real-time overall risk score</p>
+        </div>
+        <span className="muted">updated 2m ago</span>
+      </div>
+
       <div className="riskrow">
         <Donut value={0.62} />
         <ul className="legend">
@@ -38,6 +65,6 @@ export default function RiskMeter() {
           <li><i className="dot dot--red" /> High: 61–100%</li>
         </ul>
       </div>
-    </Card>
+    </div>
   );
 }

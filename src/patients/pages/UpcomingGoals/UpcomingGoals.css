@@ -1,3 +1,37 @@
-.goals{ display:flex; flex-direction:column; gap:10px; font-size:14px; max-width:100% }
-.goals__row{ display:flex; align-items:center; justify-content:space-between }
-.muted{ color: var(--muted); font-size: 12px }
+.upcoming-goals {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.goals {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  max-width: 100%;
+}
+
+.goals__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.muted {
+  color: var(--muted, #94a3b8);
+  font-size: 12px;
+}
