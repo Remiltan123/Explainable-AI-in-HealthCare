@@ -1,0 +1,42 @@
+.unc-gauge{ 
+  position:relative; 
+  width:220px; 
+  height:140px; 
+  margin:14px 0 
+}
+
+.unc-arc{
+  position:absolute; 
+  inset:0; 
+  border-radius:14px;
+  clip-path:polygon(0 100%,100% 100%,100% 0,0 0);
+  background:conic-gradient(#22c55e 0deg,#22c55e 90deg,#eab308 90deg,#eab308 180deg,#ef4444 180deg,#ef4444 270deg,#e5e7eb 270deg);
+}
+
+.unc-needle{ 
+  position:absolute; 
+  left:50%; 
+  bottom:18px; 
+  width:2px; 
+  height:90px; 
+  background:#0f172a; 
+  transform-origin:bottom center; 
+  border-radius:2px 
+}
+
+.unc-value{ 
+  position:absolute; 
+  left:50%; 
+  transform:translateX(-50%); 
+  bottom:8px; 
+  font-weight:700
+ }
+
+.unc-label{ 
+  position:absolute; 
+  left:50%; 
+  transform:translateX(-50%); 
+  bottom:-4px; 
+  font-size:12px; 
+  color:#475569 
+}
