@@ -1,0 +1,39 @@
+.sim-grid{ 
+  display:grid; 
+  grid-template-columns:1fr 1fr; 
+  gap:12px 
+}
+
+.sim-card{ 
+  background:#fff; 
+  border:1px solid #e5e7eb; 
+  border-radius:16px; 
+  padding:12px 
+}
+.sim-kpi{ 
+  background:#f1f5f9; 
+  border-radius:14px; 
+  padding:10px 12px; 
+  margin-bottom:8px 
+}
+.sim-kpi__label{ 
+  font-size:12px; 
+  color:#475569 
+}
+.sim-kpi__value{ 
+  font-size:34px; 
+  font-weight:700 
+}
+.sim-slider{ 
+  display:flex; 
+  flex-direction:column; 
+  gap:4px; 
+  margin:8px 0 
+}
+.sim-slider__label{ 
+  font-size:12px; 
+  color:#475569 
+}
+.sim-slider input[type="range"]{ 
+  width:100% 
+}
