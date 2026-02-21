@@ -1,37 +1,69 @@
 import "./ShapSummary.css";
 
-export default function ShapSummary() {
-  const items = [
-    { feature: "Glucose", value: 0.38 },
-    { feature: "BMI", value: 0.27 },
-    { feature: "Age", value: 0.19 },
-    { feature: "HbA1c", value: 0.11 },
-    { feature: "Activity", value: 0.05 },
-  ];
-  const max = Math.max(...items.map(i => i.value), 0.0001);
+export default function ShapSummary({ result }) {
+
+  if (!result?.explanations?.shap) {
+    return <p>No SHAP data yet. Predict first.</p>;
+  }
+
+  const shapData = result.explanations.shap;
+
+  // Convert object → array WITHOUT modifying values
+  const items = Object.entries(shapData).map(([key, value]) => {
+    const cleanName = key.replace(/^num__|^cat__/, "");
+    return { feature: cleanName, value };
+  });
+
+  // OPTIONAL: sort by absolute impact (does not change values)
+  items.sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
+
+  // For bar scaling only (not value change)
+  const maxAbs = Math.max(...items.map(i => Math.abs(i.value)), 0.0001);
 
   return (
-    <section>
-      <div className="card__head">
-        <div>
-          <h2 className="card__title">SHAP Summary (Global Feature Importance)</h2>
-          <p className="card__subtitle">Model-level influence of medical attributes</p>
-        </div>
+
+    <section className="shap-container">
+
+  <div className="shap-scroll">
+
+    <div className="card__head">
+        <h2>SHAP Summary (Patient Feature Impact)</h2>
+        <p>Raw contribution values from the model</p>
       </div>
 
       <div className="shap-bars">
+
         {items.map((it, idx) => (
           <div key={idx} className="shap-row">
+
             <div className="shap-label">{it.feature}</div>
+
             <div className="shap-barwrap">
-              <div className="shap-bar" style={{ width: `${(it.value / max) * 100}%` }} />
+              <div
+                className="shap-bar"
+                style={{
+                  width: `${(Math.abs(it.value) / maxAbs) * 100}%`,
+                  backgroundColor: it.value > 0 ? "#e74c3c" : "#3b82f6"
+                }}
+              />
             </div>
-            <div className="shap-val">{Math.round(it.value * 100)}%</div>
+
+            {/* ⭐ RAW VALUE — NOT PERCENT */}
+            <div className="shap-val">
+              {it.value.toFixed(6)}
+            </div>
+
           </div>
         ))}
+
       </div>
 
-      <p className="muted">Global-aa paathaa Glucose & BMI dhaan prediction-a drive pannudhu.</p>
+      <p className="muted">
+        Positive values increase risk, negative values decrease risk.
+      </p>
+
+  </div>
+
     </section>
   );
 }

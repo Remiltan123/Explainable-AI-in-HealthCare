@@ -1,28 +1,105 @@
-.shap-bars{ 
-  display:grid; 
-  gap:10px; 
-  margin-top:10px 
+/* ===== Container ===== */
+
+.shap-container {
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
 
-.shap-row{ 
-  display:grid; 
-  grid-template-columns:140px 1fr 60px; 
-  gap:10px; 
-  align-items:center 
+/* ===== Header ===== */
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 22px;
 }
 
-.shap-label{ color:#0f172a }
+.card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+}
 
-.shap-barwrap{ 
-  height:8px; 
-  background:#e5e7eb; 
-  border-radius:999px; 
-  overflow:hidden 
+.card__subtitle {
+  font-size: 14px;
+  color: #64748b;
 }
-.shap-bar{ 
-  height:8px; 
-  background:#0ea5e9 
+
+/* ===== Rows ===== */
+
+.shap-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
-.shap-val{ 
-  font-variant-numeric:tabular-nums 
+
+.shap-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 90px;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ===== Feature Name ===== */
+
+.shap-label {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 15px;
+}
+
+/* ===== Bar Wrapper ===== */
+
+.shap-barwrap {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== Actual Bar ===== */
+
+.shap-bar {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.4s ease;
+}
+
+/* Positive → Red */
+.shap-bar[style*="#e74c3c"] {
+  box-shadow: 0 0 6px rgba(231,76,60,0.4);
+}
+
+/* Negative → Blue */
+.shap-bar[style*="#3b82f6"] {
+  box-shadow: 0 0 6px rgba(59,130,246,0.4);
+}
+
+/* ===== Value ===== */
+
+.shap-val {
+  font-weight: 600;
+  text-align: right;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+/* ===== Info Text ===== */
+
+.muted {
+  margin-top: 22px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+  .shap-row {
+    grid-template-columns: 150px 1fr 70px;
+  }
 }
