@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { app } from "../../../firebaseConfig";
+import { app } from "../../firebaseConfig";
 
 function SidebarItem({ emoji, label, active, onClick }) {
   return (

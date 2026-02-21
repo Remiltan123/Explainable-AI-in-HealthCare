@@ -1,49 +1,97 @@
-.lime-rows{ 
-  display:grid; 
-  gap:10px; 
-  margin-top:10px 
+/* Container */
+.lime-container {
+  padding: 10px 6px;
 }
 
-.lime-row{ 
-  display:grid; 
-  grid-template-columns:140px 1fr 60px; 
-  gap:10px; 
-  align-items:center 
+/* Title */
+.lime-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
-.lime-axis{ 
-  display:grid; 
-  grid-template-columns:1fr 2px 1fr; 
-  align-items:center 
+.lime-subtitle {
+  color: #64748b;
+  margin-bottom: 18px;
 }
 
-.lime-neg{ 
-  height:10px; 
-  background:#dc2626; 
-  border-top-left-radius:999px; 
-  border-bottom-left-radius:999px; 
-  justify-self:end 
+/* 🔥 Scroll box */
+.lime-scroll {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 6px;
 }
 
-.lime-zero{ 
-  width:2px; 
-  height:14px; 
-  background:#111827; 
-  opacity:.3 
+/* Row layout */
+.lime-row {
+  display: grid;
+  grid-template-columns: 320px 1fr 90px;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
-.lime-pos{ 
-  height:10px; 
-  background:#16a34a; 
-  border-top-right-radius:999px; 
-  border-bottom-right-radius:999px 
+/* Label */
+.lime-label {
+  font-weight: 500;
+  color: #334155;
+  white-space: normal;
+  word-break: break-word;
 }
 
+/* Axis */
+.lime-axis {
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  position: relative;
+}
 
-.lime-val{ font-variant-numeric:tabular-nums }
+/* Bar */
+.lime-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
 
-.lime-val.pos{ color:#166534 }
+/* Positive = Green */
+.lime-bar.pos {
+  background: #22c55e;
+}
 
-.lime-val.neg{ color:#991b1b }
+/* Negative = Red */
+.lime-bar.neg {
+  background: #ef4444;
+}
 
-.lime-label{ color:#0f172a }
+/* Value text */
+.lime-val {
+  text-align: right;
+  font-weight: 600;
+}
+
+.lime-val.pos {
+  color: #15803d;
+}
+
+.lime-val.neg {
+  color: #b91c1c;
+}
+
+/* Note */
+.lime-note {
+  margin-top: 14px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.lime-debug {
+  background: #111;
+  color: #0f0;
+  padding: 12px;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px;
+  margin-bottom: 20px;
+}

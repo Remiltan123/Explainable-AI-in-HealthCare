@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { app } from "../../../firebaseConfig";
+import { app } from "../../firebaseConfig";
 
 function SidebarItem({ emoji, label, active, onClick }) {
   return (
@@ -20,9 +20,10 @@ function SidebarItem({ emoji, label, active, onClick }) {
 export default function Sidebar({ active, setActive }) {
   const [userName, setUserName] = useState("Patient");
   const [profileImg, setProfileImg] = useState(null);
+
   const auth = getAuth(app);
 
-  // ✅ Get Firebase user info
+  // ✅ Firebase user name
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -36,7 +37,7 @@ export default function Sidebar({ active, setActive }) {
     return unsubscribe;
   }, [auth]);
 
-  // ✅ Handle image upload (local preview)
+  // ✅ Profile image preview
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -49,9 +50,11 @@ export default function Sidebar({ active, setActive }) {
   return (
     <aside className="sidebar sidebar--collapsible">
       <div className="sidebar__inner">
-        {/* 👤 USER INFO */}
+
+        {/* 👤 USER */}
         <div className="userpill">
-          <div className="userpill__avatar" aria-hidden>
+          <div className="userpill__avatar">
+
             {profileImg ? (
               <img src={profileImg} alt="User Avatar" className="avatar-img" />
             ) : (
@@ -86,13 +89,13 @@ export default function Sidebar({ active, setActive }) {
         {/* 📋 MENU */}
         <div className="sidebar__menu">
 
-          {/* ⭐ NEW TAB */}
           <SidebarItem
             emoji="📝"
             label="Patient Input"
             active={active === "input"}
             onClick={() => setActive("input")}
           />
+
 
           <SidebarItem
             emoji="🌎"
@@ -109,24 +112,18 @@ export default function Sidebar({ active, setActive }) {
           />
 
           <SidebarItem
-            emoji="⚖️"
-            label="Fairness"
-            active={active === "fairness"}
-            onClick={() => setActive("fairness")}
-          />
-
-          <SidebarItem
-            emoji="❓"
-            label="Uncertainty"
-            active={active === "uncertainty"}
-            onClick={() => setActive("uncertainty")}
-          />
-
-          <SidebarItem
             emoji="🔬"
             label="What-If Simulation"
             active={active === "simulate"}
             onClick={() => setActive("simulate")}
+          />
+
+          {/* ⭐ NEW DOCTOR TAB */}
+          <SidebarItem
+            emoji="🩺"
+            label="Doctor Entry"
+            active={active === "doctorForm"}
+            onClick={() => setActive("doctorForm")}
           />
 
         </div>

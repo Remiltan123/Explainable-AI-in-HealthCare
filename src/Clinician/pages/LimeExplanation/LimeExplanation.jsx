@@ -4,10 +4,10 @@ export default function LimeExplanation({ result }) {
 
   const limeData = result?.explanations?.lime;
 
-  if (!limeData)
-    return <p className="muted">No LIME explanation available.</p>;
+  if (!limeData) {
+    return <p>No LIME data available. Run prediction first.</p>;
+  }
 
-  // Convert object → array
   const items = Object.entries(limeData).map(([feature, value]) => ({
     feature,
     value
@@ -15,44 +15,52 @@ export default function LimeExplanation({ result }) {
 
   const maxAbs = Math.max(...items.map(i => Math.abs(i.value)), 0.0001);
 
+  const cleanLabel = (text) => {
+    return text
+      .replace("num__", "")
+      .replace("cat__", "")
+      .replace(/_/g, " ");
+  };
+
   return (
-    <section>
+    <section className="lime-container">
 
-      <div className="card__head">
-        <div>
-          <h2 className="card__title">LIME Explanation (Per-Patient)</h2>
-          <p className="card__subtitle">
-            Feature impact for THIS prediction
-          </p>
-        </div>
-      </div>
+      <h2>LIME Explanation (Per-Patient)</h2>
 
-      <div className="lime-rows">
+      {/* 🔥 RAW BACKEND DATA */}
+      <pre className="lime-debug">
+        {JSON.stringify(limeData, null, 2)}
+      </pre>
+
+      {/* 🔥 SCROLL BOX */}
+      <div className="lime-scroll">
 
         {items.map((it, idx) => {
-          const pct = (Math.abs(it.value) / maxAbs) * 50;
+          const pct = (Math.abs(it.value) / maxAbs) * 100;
 
           return (
             <div key={idx} className="lime-row">
 
               <div className="lime-label">
-                {it.feature.replace(/num__|cat__/g, "")}
+                {cleanLabel(it.feature)}
               </div>
 
               <div className="lime-axis">
                 <div
-                  className="lime-neg"
-                  style={{ width: `${it.value < 0 ? pct : 0}%` }}
-                />
-                <div className="lime-zero" />
-                <div
-                  className="lime-pos"
-                  style={{ width: `${it.value > 0 ? pct : 0}%` }}
+                  className={`lime-bar ${
+                    it.value >= 0 ? "pos" : "neg"
+                  }`}
+                  style={{ width: `${pct}%` }}
                 />
               </div>
 
-              <div className={`lime-val ${it.value >= 0 ? "pos" : "neg"}`}>
-                {(it.value >= 0 ? "+" : "") + (it.value * 100).toFixed(1)}%
+              <div
+                className={`lime-val ${
+                  it.value >= 0 ? "pos" : "neg"
+                }`}
+              >
+                {(it.value >= 0 ? "+" : "") +
+                  (it.value * 100).toFixed(1)}%
               </div>
 
             </div>
@@ -60,10 +68,6 @@ export default function LimeExplanation({ result }) {
         })}
 
       </div>
-
-      <p className="muted">
-        Positive → increases risk • Negative → decreases risk
-      </p>
 
     </section>
   );

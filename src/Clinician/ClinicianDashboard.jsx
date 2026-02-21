@@ -9,6 +9,7 @@ import ShapSummary from "./pages/ShapSummary/ShapSummary";
 import LimeExplanation from "./pages/LimeExplanation/LimeExplanation";
 import WhatIfSimulation from "./pages/WhatIfSimulation/WhatIfSimulation";
 import PatientInputForm from "./pages/PatientInputForm/PatientInputForm";
+import DoctorPatientForm from "./pages/DoctorPatientForm/DoctorPatientForm"; // ⭐ NEW
 
 export default function ClinicianDashboard() {
   const [active, setActive] = useState("shap");
@@ -16,8 +17,12 @@ export default function ClinicianDashboard() {
 
   function renderContent() {
     switch (active) {
+
       case "input":
         return <PatientInputForm onResult={setResult} />;
+
+      case "doctorForm":     // ⭐ NEW TAB CONTENT
+        return <DoctorPatientForm />;
 
       case "shap":
         return <ShapSummary result={result} />;
