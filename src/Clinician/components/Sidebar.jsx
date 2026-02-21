@@ -26,7 +26,8 @@ export default function Sidebar({ active, setActive }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const name = user.displayName || user.email?.split("@")[0] || "Patient";
+        const name =
+          user.displayName || user.email?.split("@")[0] || "Patient";
         setUserName(name);
       } else {
         setUserName("Guest");
@@ -48,6 +49,7 @@ export default function Sidebar({ active, setActive }) {
   return (
     <aside className="sidebar sidebar--collapsible">
       <div className="sidebar__inner">
+        {/* 👤 USER INFO */}
         <div className="userpill">
           <div className="userpill__avatar" aria-hidden>
             {profileImg ? (
@@ -55,6 +57,7 @@ export default function Sidebar({ active, setActive }) {
             ) : (
               "🧑‍⚕️"
             )}
+
             {/* Hidden file input */}
             <input
               type="file"
@@ -63,9 +66,12 @@ export default function Sidebar({ active, setActive }) {
               style={{ display: "none" }}
               onChange={handleImageUpload}
             />
+
             <button
               className="avatar-edit-btn"
-              onClick={() => document.getElementById("avatarInput").click()}
+              onClick={() =>
+                document.getElementById("avatarInput").click()
+              }
               title="Change picture"
             >
               ✏️
@@ -77,12 +83,52 @@ export default function Sidebar({ active, setActive }) {
           </div>
         </div>
 
+        {/* 📋 MENU */}
         <div className="sidebar__menu">
-          <SidebarItem emoji="🌎" label="SHAP Summary" active={active==="shap"} onClick={()=>setActive("shap")} />
-          <SidebarItem emoji="🧩" label="LIME (Per-Patient)" active={active==="lime"} onClick={()=>setActive("lime")} />
-          <SidebarItem emoji="⚖️" label="Fairness" active={active==="fairness"} onClick={()=>setActive("fairness")} />
-          <SidebarItem emoji="❓" label="Uncertainty" active={active==="uncertainty"} onClick={()=>setActive("uncertainty")} />
-          <SidebarItem emoji="🔬" label="What-If Simulation" active={active==="simulate"} onClick={()=>setActive("simulate")} />
+
+          {/* ⭐ NEW TAB */}
+          <SidebarItem
+            emoji="📝"
+            label="Patient Input"
+            active={active === "input"}
+            onClick={() => setActive("input")}
+          />
+
+          <SidebarItem
+            emoji="🌎"
+            label="SHAP Summary"
+            active={active === "shap"}
+            onClick={() => setActive("shap")}
+          />
+
+          <SidebarItem
+            emoji="🧩"
+            label="LIME (Per-Patient)"
+            active={active === "lime"}
+            onClick={() => setActive("lime")}
+          />
+
+          <SidebarItem
+            emoji="⚖️"
+            label="Fairness"
+            active={active === "fairness"}
+            onClick={() => setActive("fairness")}
+          />
+
+          <SidebarItem
+            emoji="❓"
+            label="Uncertainty"
+            active={active === "uncertainty"}
+            onClick={() => setActive("uncertainty")}
+          />
+
+          <SidebarItem
+            emoji="🔬"
+            label="What-If Simulation"
+            active={active === "simulate"}
+            onClick={() => setActive("simulate")}
+          />
+
         </div>
       </div>
     </aside>
