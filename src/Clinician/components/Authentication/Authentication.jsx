@@ -30,9 +30,12 @@ export default function Authentication() {
     try {
       if (mode === "login") {
         await signInWithEmailAndPassword(auth, email.trim(), password);
+        localStorage.setItem("userEmail", email.trim());
+        console.log(fullName)
         setToastMsg("Welcome back! 🎉");
       } else {
         await createUserWithEmailAndPassword(auth, email.trim(), password);
+        localStorage.setItem("userEmail", email.trim());
         setToastMsg("Account created! Welcome 👋");
       }
 
@@ -40,7 +43,7 @@ export default function Authentication() {
       setShowToast(true);
       setTimeout(() => {
         setShowToast(false);
-        navigate(-1);
+        
       }, 1200);
     } catch (err) {
       setError(err?.message ?? "Something went wrong");

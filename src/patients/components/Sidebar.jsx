@@ -81,7 +81,7 @@ export default function Sidebar({ active, setActive }) {
           <SidebarItem emoji="📈" label="Risk Meter" active={active === "risk"} onClick={() => setActive("risk")} />
           <SidebarItem emoji="📘" label="Easy Explanation" active={active === "easy"} onClick={() => setActive("easy")} />
           <SidebarItem emoji="💓" label="Personalized Recos" active={active === "recos"} onClick={() => setActive("recos")} />
-          <SidebarItem emoji="✅" label="Progress Tracking" active={active === "progress"} onClick={() => setActive("progress")} />
+          {/* <SidebarItem emoji="✅" label="Progress Tracking" active={active === "progress"} onClick={() => setActive("progress")} /> */}
           <SidebarItem emoji="🔔" label="Upcoming Goals" active={active === "goals"} onClick={() => setActive("goals")} />
         </div>
       </div>

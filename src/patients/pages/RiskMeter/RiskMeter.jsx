@@ -58,7 +58,7 @@ export default function RiskMeter() {
       </div>
 
       <div className="riskrow">
-        <Donut value={0.62} />
+        <Donut value={0.75} />
         <ul className="legend">
           <li><i className="dot dot--green" /> Low: 0–30%</li>
           <li><i className="dot dot--amber" /> Medium: 31–60%</li>

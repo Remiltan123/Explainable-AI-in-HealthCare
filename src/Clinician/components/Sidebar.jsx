@@ -29,6 +29,7 @@ export default function Sidebar({ active, setActive }) {
       if (user) {
         const name =
           user.displayName || user.email?.split("@")[0] || "Patient";
+          console.log(user.email)
         setUserName(name);
       } else {
         setUserName("Guest");
