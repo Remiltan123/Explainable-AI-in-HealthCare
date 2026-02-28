@@ -22,9 +22,9 @@ export default function ShapSummary({ result }) {
 
   return (
 
-    <section className="shap-container">
+    <section className="shap-container-df">
 
-  <div className="shap-scroll">
+  <div className="shap-scroll-dfs">
 
     <div className="card__head">
         <h2>SHAP Summary (Patient Feature Impact)</h2>

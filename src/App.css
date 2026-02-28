@@ -1,4 +1,4 @@
-/* Page fills viewport, never shows browser scrollbars */
+Page fills viewport, never shows browser scrollbars
 html, body, #root {
   height: 100%;
   width: 100%;
