@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { app } from "../../../../firebaseConfig";
+import { app } from "../../../firebaseConfig";
 
 export default function Authentication() {
   const navigate = useNavigate();
